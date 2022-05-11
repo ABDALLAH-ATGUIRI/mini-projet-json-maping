@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="test.searchcept.com" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>searchcept</title>
+  </head>
+  <body>
+    <section class="contener">
+      <div class="table-contener">
+        <div class="last-contener">
+          <div class="comp-title">
+            <h1>list des utilisateurs</h1>
+          </div>
+          <div>
+            <table class="table-utilis">
+              <thead class="table-head">
+                <tr>
+                  <td>ID</td>
+                  <td>Date de céation</td>
+                  <td>Etat</td>
+                  <td>Nom</td>
+                  <td>Prénom</td>
+                  <td>Nom d'utilisateur</td>
+                  <td>Matricule</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+
+              <tbody id="change">
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="add">
+        <button onclick="ajouter()">Ajouter utilisateur</button>
+      </div>
+    </section>
+
+    <section class="section-c2b" onclick="ajouter()" id="ajouter">
+      <div class="popup">
+        <h1>Ajout d'utilisateur</h1>
+        <form action="" class="form-utilis">
+          <div class="item-cont">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" required />
+          </div>
+
+          <div class="item-cont">
+            <label for="prénom">Prénom *</label>
+            <input type="text" id="prénom" required />
+          </div>
+
+          <div class="item-cont">
+            <label for="etat*">Etat*</label>
+            <select name="etat" id="Etat" required>
+              <option value="">selectioner votre etat</option>
+              <option value="En validation">En validation</option>
+              <option value="Validé">Validé</option>
+              <option value="Rejeté">Rejeté</option>
+            </select>
+          </div>
+          <div class="item-cont">
+            <label for="nom-utili">Date de création*</label>
+            <input type="text" id="nom-utili" required />
+          </div>
+
+          <div class="item-cont">
+            <label for="date">Date de création*</label>
+            <input type="datetime-local" id="date" required />
+          </div>
+
+          <div class="item-cont">
+            <label for="matricule *">Matricule</label>
+            <input type="text" id="matricule" required />
+          </div>
+
+          <button>Enregistrer</button>
+        </form>
+      </div>
+    </section>
+    <section class="section-c2b" id="sup">
+      <div class="popup">
+        <h1>voulez vous suprimer cette utilisateur</h1>
+        <div class="choix">
+          <button class="" id="oui">OUI</button>
+          <button id="non" onclick="supreme()">NON</button>
+        </div>
+        
+      </div>
+    </section >
+  </body>
+
+  <script src="./js.js"></script>
+</html>
