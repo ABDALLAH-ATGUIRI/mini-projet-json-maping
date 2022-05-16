@@ -1,19 +1,18 @@
 let datajs = document.querySelector("#change");
-
-fetch("data.json")
+fetch("http://localhost:3000/user")
   .then((res) => res.json())
   .then((data) =>
     data.forEach((element) => {
       datajs.innerHTML += `<tr class="utilis-conf">
 <td>${element.id}</td>
-<td>${element.createdDat}</td>
+<td>${element.createdDate}</td>
 <td><p class="valid ${element.status}">${element.status}</p></td>
 <td>${element.firstName}</td>
 <td>${element.lastName}</td>
 <td>${element.userName}</td>
 <td>${element.registrationNumber}</td>
 <td>
-  <button class="trash" onclick="supreme()">
+  <button class="trash" onclick="supreme(${element.id})">
     <svg
       fill="#D53D1C"
       xmlns="http://www.w3.org/2000/svg"
@@ -31,16 +30,38 @@ fetch("data.json")
     })
   );
 
-function supreme() {
+async function supreme(id) {
   let el = document.getElementById("sup");
+  let SS = document.getElementById("oui");
 
   if (el.style.display === "block") {
     el.style.display = "none";
   } else {
     el.style.display = "block";
+    SS.value = id;
   }
 }
+function deleteUser() {
+  let SS = document.getElementById("oui");
+  let data = {
+    id: SS.value,
+  };
+  fetch("http://localhost:3000/user" + "/" + SS.value, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) =>
+    res.json().then((json) => {
+      console.log(json);
+    })
+  );
 
+  // data.filter((user) => user.id != SS.value),
+  // console.log(user)
+  // displayUsers(users)
+}
 function ajouter() {
   let el = document.getElementById("ajouter");
 
@@ -50,3 +71,48 @@ function ajouter() {
     el.style.display = "block";
   }
 }
+
+function addUser() {
+  let id = Math.floor(Math.random() * 100000);
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+  let userName = document.getElementById("userName").value;
+  let registrationNumber = document.getElementById("registrationNumber").value;
+  let status = document.getElementById("etat").value;
+  let createdDate = document.getElementById("createdDate").value;
+  let data = {
+    id,
+    firstName,
+    lastName,
+    userName,
+    registrationNumber,
+    status,
+    createdDate,
+  };
+  fetch("http://localhost:3000/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      document.getElementById("firstName").value = "";
+      document.getElementById("lastName").value = "";
+      document.getElementById("userName").value = "";
+      document.getElementById("status").value = "";
+      document.getElementById("createdDate").value = "";
+      document.getElementById("registrationNumber").value = "";
+    }).then(
+      
+    )
+    .catch();
+    
+  
+}
+
+const form = document.querySelector("#ajoutForm");
+    form.addEventListener("click", addUser);
+    form.onSubmit = addUser;

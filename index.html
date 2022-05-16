@@ -42,23 +42,23 @@
       </div>
     </section>
 
-    <section class="section-c2b" onclick="ajouter()" id="ajouter">
+    <section class="section-c2b" id="ajouter">
       <div class="popup">
         <h1>Ajout d'utilisateur</h1>
         <form action="" class="form-utilis">
           <div class="item-cont">
             <label for="nom">Nom *</label>
-            <input type="text" id="nom" required />
+            <input type="text" id="firstName" required />
           </div>
 
           <div class="item-cont">
             <label for="prénom">Prénom *</label>
-            <input type="text" id="prénom" required />
+            <input type="text" id="lastName" required />
           </div>
 
           <div class="item-cont">
             <label for="etat*">Etat*</label>
-            <select name="etat" id="Etat" required>
+            <select name="etat" id="etat" required>
               <option value="">selectioner votre etat</option>
               <option value="En validation">En validation</option>
               <option value="Validé">Validé</option>
@@ -66,21 +66,21 @@
             </select>
           </div>
           <div class="item-cont">
-            <label for="nom-utili">Date de création*</label>
-            <input type="text" id="nom-utili" required />
+            <label for="nom-utili">Nom d'utilisateur **</label>
+            <input type="text" id="userName" required />
           </div>
 
           <div class="item-cont">
             <label for="date">Date de création*</label>
-            <input type="datetime-local" id="date" required />
+            <input type="datetime-local" id="createdDate" required />
           </div>
 
           <div class="item-cont">
             <label for="matricule *">Matricule</label>
-            <input type="text" id="matricule" required />
+            <input type="text" id="registrationNumber" required />
           </div>
 
-          <button>Enregistrer</button>
+          <button onclick="addUser()" id="ajoutForm">Enregistrer</button>
         </form>
       </div>
     </section>
@@ -88,8 +88,8 @@
       <div class="popup">
         <h1>voulez vous suprimer cette utilisateur</h1>
         <div class="choix">
-          <button class="" id="oui">OUI</button>
-          <button id="non" onclick="supreme()">NON</button>
+          <button class="" id="oui" onclick="deleteUser()">OUI</button>
+          <button id="non" onclick="supreme(id)">NON</button>
         </div>
         
       </div>
